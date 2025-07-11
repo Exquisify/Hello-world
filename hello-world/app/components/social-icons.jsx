@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Github, Twitter, Linkedin, MessageCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button"
 
 export function SocialIcons() {
   return (
