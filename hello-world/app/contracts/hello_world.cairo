@@ -99,7 +99,7 @@ mod HelloWorld {
         self.comment_count.write(0);
     }
 
-    #[external(v0)]
+    #[external]
     impl HelloWorldImpl of super::IHelloWorld<ContractState> {
         fn register_user(ref self: ContractState) {
             let caller = get_caller_address();
@@ -123,10 +123,10 @@ mod HelloWorld {
             let mut user = self.users.read(caller);
             assert(user.is_registered, "User not registered");
 
-            // In a real contract, you would handle token transfers for payment here
+            //  you would handle token transfers for payment here
             
             // Calculate new expiry (current timestamp + duration in seconds)
-            // Note: In a real contract, you would use block timestamp
+            // Note:  you would use block timestamp
             let current_time: u64 = starknet::get_block_timestamp();
             let seconds_in_day: u64 = 86400;
             let duration_seconds: u64 = duration_days * seconds_in_day;
