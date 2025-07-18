@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@radix-ui/react-hover-card": "^1.1.14",
+    "@radix-ui/react-toast": "^1.2.14",
+    "class-variance-authority": "^0.7.1"
+  }
+}
