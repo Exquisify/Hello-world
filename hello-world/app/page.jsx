@@ -19,7 +19,7 @@ const page = () => {
               </h1>
               <p className='max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
                 Hello-World is a decentralized platform for sharing crypto
-                insights, analysis, and predictions built on StarkNet.
+                insights, analysis, and predictions built on Stellar.
               </p>
             </div>
             <div className='mx-auto lg:mx-0 f w-full max-w-[500px]'>
