@@ -131,7 +131,7 @@ export default function CommunityPage() {
                       </Avatar>
                       <div>
                         <CardTitle className="text-lg">
-                          <GradientText>StarkNet vs other L2 solutions: A technical comparison</GradientText>
+                          <GradientText>Soroban vs other Smart Contract Platforms: A technical comparison</GradientText>
                         </CardTitle>
                         <div className="flex items-center gap-2 mt-1">
                           <span className="text-sm text-muted-foreground">BlockchainDev</span>
@@ -143,9 +143,9 @@ export default function CommunityPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">
-                      I've been researching different Layer 2 scaling solutions and wanted to share my findings on how
-                      StarkNet compares to Optimism, Arbitrum, and zkSync in terms of performance, security, and
-                      developer experience.
+                      I've been researching different smart contract platforms and wanted to share my findings on how
+                      Soroban (on Stellar) compares to others in terms of performance, security, and developer
+                      experience.
                     </p>
                   </CardContent>
                   <CardFooter className="flex justify-between">
@@ -170,9 +170,9 @@ export default function CommunityPage() {
                 <Card>
                   <CardHeader>
                     <CardTitle>
-                      <GradientText>StarkNet Developer Workshop</GradientText>
+                      <GradientText>Soroban Developer Workshop</GradientText>
                     </CardTitle>
-                    <CardDescription>Learn how to build on StarkNet with our expert developers</CardDescription>
+                    <CardDescription>Learn how to build on Soroban with our expert developers</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="flex items-center gap-2 mb-4">
@@ -181,7 +181,7 @@ export default function CommunityPage() {
                     </div>
                     <p className="text-muted-foreground">
                       Join us for a hands-on workshop where you'll learn how to build decentralized applications on
-                      StarkNet. We'll cover smart contract development, testing, and deployment.
+                      Soroban. We'll cover smart contract development, testing, and deployment.
                     </p>
                   </CardContent>
                   <CardFooter>
@@ -285,13 +285,13 @@ export default function CommunityPage() {
                           <CardTitle>
                             <GradientText>L2Enthusiast</GradientText>
                           </CardTitle>
-                          <CardDescription>StarkNet Developer</CardDescription>
+                          <CardDescription>Soroban Developer</CardDescription>
                         </div>
                       </div>
                     </CardHeader>
                     <CardContent>
                       <p className="text-muted-foreground">
-                        Leading contributor on Layer 2 scaling solutions. Has published 28 ideas about StarkNet
+                        Leading contributor on smart contract platforms. Has published 28 ideas about the Soroban
                         ecosystem opportunities.
                       </p>
                     </CardContent>
