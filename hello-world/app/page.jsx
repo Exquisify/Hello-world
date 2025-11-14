@@ -1,9 +1,11 @@
 import React from "react";
-import { GradientText } from './components/gradientText';
+import { GradientText } from '@/components/gradient-text';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@nextui-org/react';
-import { SocialIcons } from './components/social-icons';
+import { SocialIcons } from '@/components/social-icons';
+import { Zap, BarChart2, Users, ArrowRight } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
 
 const page = () => {
   return (
@@ -14,7 +16,7 @@ const page = () => {
             <div className='space-y-4 flex'>
               <h1 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
                 <GradientText className='text-center'>
-                  Discover and Share Crypto Ideas and strategies on starknet
+                  Discover and Share Crypto Ideas and strategies on Stellar
                 </GradientText>
               </h1>
               <p className='max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
