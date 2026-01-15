@@ -1,5 +1,5 @@
 join our telegram channel to build with us
-https://t.me/+aDl_yQSymp0xZmI0
+https://t.me/+sq2jJQgysWAxMjY0
 
 # 🚀 Hello-World: Decentralized Crypto Idea-Sharing Platform
 
