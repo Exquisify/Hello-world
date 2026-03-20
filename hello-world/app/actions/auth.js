@@ -6,33 +6,20 @@ import crypto from "crypto"
 
 // Simple in-memory user store (in a real app, use a database)
 
-type User = {
-  id: string
-  firstName: string
-  lastName: string
-  email: string
-  passwordHash: string
-}
-
 // In a real app, this would be a database
-const users: Record<string, User> = {}
+const users = {};
 
 // Session management
-type Session = {
-  id: string
-  userId: string
-  expiresAt: number
-}
-
-const sessions: Record<string, Session> = {}
+const sessions = {};
 
 // Helper to hash passwords
-function hashPassword(password: string): string {
-  return crypto.createHash("sha256").update(password).digest("hex")
+function hashPassword(password) {
+ return crypto.createHash("sha256").update(password).digest("hex");
 }
 
+// Session management
 // Helper to create a session
-function createSession(userId: string): string {
+function createSession(userId) {
   const sessionId = crypto.randomUUID()
   const expiresAt = Date.now() + 7 * 24 * 60 * 60 * 1000 // 7 days
 
@@ -46,7 +33,7 @@ function createSession(userId: string): string {
 }
 
 // Helper to get current session
-export function getSession(): Session | null {
+export function getSession() {
   const sessionId = cookies().get("session_id")?.value
 
   if (!sessionId || !sessions[sessionId]) {
@@ -66,7 +53,7 @@ export function getSession(): Session | null {
 }
 
 // Helper to get current user
-export function getCurrentUser(): User | null {
+export function getCurrentUser() {
   const session = getSession()
   if (!session) return null
 
@@ -94,7 +81,7 @@ const SignInSchema = z.object({
 })
 
 // Sign up action
-export async function signUp(formData: FormData) {
+export async function signUp(formData) {
   try {
     const validatedFields = SignUpSchema.safeParse({
       firstName: formData.get("firstName"),
@@ -154,7 +141,7 @@ export async function signUp(formData: FormData) {
 }
 
 // Sign in action
-export async function signIn(formData: FormData) {
+export async function signIn(formData) {
   try {
     const validatedFields = SignInSchema.safeParse({
       email: formData.get("email"),

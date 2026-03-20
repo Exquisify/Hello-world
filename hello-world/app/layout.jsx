@@ -1,12 +1,12 @@
 import "./globals.css"
-import { Inter } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
+import { Inter } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
   title: "Hello-World | Crypto Idea-Sharing Platform",
-  description: "A decentralized, community-driven platform for crypto ideas sharing and insights built on StarkNet",
+  description: "A decentralized, community-driven platform for crypto ideas sharing and insights built on Stellar",
     generator: 'Divineifed1'
 }
 

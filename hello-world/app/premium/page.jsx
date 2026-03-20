@@ -25,7 +25,7 @@ export default function PremiumPage() {
             <MobileNav />
             <Link href="/" className="flex items-center gap-2 ml-2 md:ml-0">
               <Image
-                src="/logo.jpg"
+                src="/placeholder-logo.svg"
                 alt="Hello-World Logo"
                 width={32}
                 height={32}
@@ -274,7 +274,7 @@ export default function PremiumPage() {
         <div className="container flex flex-col items-center justify-between gap-4 md:h-16 md:flex-row px-4 md:px-6">
           <div className="flex items-center gap-2">
             <Image
-              src="/logo.jpg"
+              src="/placeholder-logo.svg"
               alt="Hello-World Logo"
               width={24}
               height={24}

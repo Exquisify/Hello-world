@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import * as React from "react"
 import { Search, Filter, Save, Bookmark, X, RotateCcw } from "lucide-react"
@@ -30,23 +30,20 @@ import {
 import { DateRangePicker } from "@/components/ui/date-range-picker"
 import { RangeSlider } from "@/components/ui/range-slider"
 import { UserAutocomplete } from "@/components/ui/user-autocomplete"
-import { useSearchFilters } from "@/hooks/use-search-filters"
+import { useSearchFilters } from "@/hooks/use-search-filters.jsx"
 import { QUICK_FILTERS } from "@/lib/search-utils"
-import type { User } from "@/types/search"
 
-interface AdvancedSearchProps {
-  onSearch?: () => void
-}
 
-export function AdvancedSearch({ onSearch }: AdvancedSearchProps) {
+
+export function AdvancedSearch({ onSearch }) {
   const { filters, updateFilters, clearFilters, savedSearches, saveSearch, deleteSavedSearch, loadSavedSearch } =
     useSearchFilters()
 
   const [isAdvancedOpen, setIsAdvancedOpen] = React.useState(false)
   const [saveDialogOpen, setSaveDialogOpen] = React.useState(false)
   const [searchName, setSearchName] = React.useState("")
-
-  const handleQuickFilter = (quickFilter: (typeof QUICK_FILTERS)[0]) => {
+ 
+  const handleQuickFilter = (quickFilter) => {
     updateFilters(quickFilter.filters)
     onSearch?.()
   }
@@ -60,7 +57,7 @@ export function AdvancedSearch({ onSearch }: AdvancedSearchProps) {
   }
 
   const hasActiveFilters = Object.keys(filters).some((key) => {
-    const value = filters[key as keyof typeof filters]
+    const value = filters[key]
     if (key === "query") return value && value.length > 0
     if (key === "authors") return value && value.length > 0
     if (key === "tags") return value && value.length > 0
@@ -224,7 +221,7 @@ export function AdvancedSearch({ onSearch }: AdvancedSearchProps) {
                 <Label>Authors</Label>
                 <UserAutocomplete
                   selectedUsers={filters.authors?.map((id) => ({ id, name: id, email: "" })) || []}
-                  onUsersChange={(users: User[]) => updateFilters({ authors: users.map((u) => u.id) })}
+                  onUsersChange={(users) => updateFilters({ authors: users.map((u) => u.id) })}
                   placeholder="Search and select authors..."
                 />
               </div>

@@ -27,7 +27,7 @@ const page = () => {
             <div className='mx-auto lg:mx-0 f w-full max-w-[500px]'>
               <div className='aspect-video flex rounded-xl bg-muted/60 overflow-hidden'>
                 <Image
-                  src='/logo.jpg'
+                  src='/placeholder-logo.svg'
                   alt='Platform preview'
                   width={100}
                   height={100}

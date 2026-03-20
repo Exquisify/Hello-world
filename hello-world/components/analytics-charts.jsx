@@ -18,12 +18,7 @@ import {
   ResponsiveContainer,
 } from "recharts"
 
-interface AnalyticsChartsProps {
-  data: any[]
-  type: "performance" | "engagement" | "audience" | "predictions"
-}
-
-export function AnalyticsCharts({ data, type }: AnalyticsChartsProps) {
+export function AnalyticsCharts({ data, type }) {
   if (!data || data.length === 0) {
     return <div className="h-64 flex items-center justify-center text-muted-foreground">No data available</div>
   }
@@ -32,7 +27,7 @@ export function AnalyticsCharts({ data, type }: AnalyticsChartsProps) {
     primary: "#3b82f6",
     secondary: "#10b981",
     accent: "#f59e0b",
-    muted: "#6b7280",
+    muted: "#4b515cff",
   }
 
   switch (type) {
