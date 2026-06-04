@@ -60,7 +60,7 @@ export default function TrendingPage() {
                     </CardTitle>
                     <Badge variant={topic.change > 0 ? "outline" : "secondary"} className="flex items-center">
                       {topic.change > 0 ? <ArrowUpRight className="mr-1 h-3 w-3" /> : null}
-                      {topic.change > 0 ? +${topic.change}% : ${topic.change}%}
+                      {topic.change > 0 ? `${topic.change}%` : `${topic.change}%`}
                     </Badge>
                   </div>
                   <CardDescription>{topic.description}</CardDescription>
@@ -78,7 +78,7 @@ export default function TrendingPage() {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">{topic.posts} posts this week</span>
-                    <Link href={/topics/${topic.id}}>
+                    <Link href={`/topics/${topic.id}`}>
                       <Button variant="ghost" size="sm">
                         View Details
                       </Button>
@@ -100,7 +100,7 @@ export default function TrendingPage() {
                   <CardContent className="p-6">
                     <div className="flex justify-between items-start">
                       <div>
-                        <Link href={/discussions/${discussion.id}}>
+                        <Link href={`/discussions/${discussion.id}`}>
                           <h3 className="text-lg font-semibold mb-2 hover:underline">{discussion.title}</h3>
                         </Link>
                         <p className="text-muted-foreground mb-4">{discussion.excerpt}</p>
@@ -175,19 +175,19 @@ const trendingTopics = [
   },
   {
     id: 2,
-    name: "Layer 2 Scaling",
-    description: "Ethereum scaling solutions and their ecosystem growth",
+    name: "Stellar DeFi",
+    description: "Decentralized finance ecosystem growth on Stellar network",
     change: 86,
     posts: 217,
-    relatedTags: ["Ethereum", "Layer 2", "StarkNet", "Optimism", "Arbitrum"],
+    relatedTags: ["Stellar", "DeFi", "Soroban", "DEX"],
   },
   {
     id: 3,
-    name: "AI & Crypto",
-    description: "Intersection of artificial intelligence and blockchain technology",
+    name: "Soroban Smart Contracts",
+    description: "Development and adoption of Stellar's smart contract platform",
     change: 64,
     posts: 189,
-    relatedTags: ["AI", "Machine Learning", "Oracles", "Data"],
+    relatedTags: ["Soroban", "Smart Contracts", "Rust", "Blockchain"],
   },
   {
     id: 4,
@@ -207,11 +207,11 @@ const trendingTopics = [
   },
   {
     id: 6,
-    name: "NFT Renaissance",
-    description: "New use cases and market recovery for non-fungible tokens",
+    name: "Stablecoins on Stellar",
+    description: "USD Coin and other stablecoin growth on Stellar network",
     change: 37,
     posts: 124,
-    relatedTags: ["NFT", "Digital Art", "Gaming", "Collectibles"],
+    relatedTags: ["Stablecoins", "USDC", "Payments", "Remittances"],
   },
 ]
 
@@ -228,22 +228,22 @@ const trendingDiscussions = [
   },
   {
     id: 2,
-    title: "StarkNet vs. zkSync: Technical comparison and investment thesis",
+    title: "Stellar vs Ethereum: A comparison of smart contract platforms",
     excerpt:
-      "A deep dive into the technical differences between these two leading ZK rollup solutions, and why one might outperform the other in the long term.",
-    author: "ZKResearcher",
+      "A deep dive into the technical differences between these two leading blockchain solutions, and why Stellar's Soroban might be the better choice for certain use cases.",
+    author: "StellarDeveloper",
     date: "3 days ago",
     comments: 64,
-    tags: ["Layer 2", "StarkNet", "zkSync", "ZK Rollups"],
+    tags: ["Stellar", "Ethereum", "Soroban", "Smart Contracts"],
   },
   {
     id: 3,
-    title: "The impact of AI on blockchain oracle solutions",
+    title: "The growth of DeFi on Stellar with Soroban",
     excerpt:
-      "How machine learning and AI technologies are being integrated with blockchain oracles to provide more accurate and reliable data feeds for smart contracts.",
-    author: "OracleExpert",
+      "How Stellar's Soroban smart contracts are enabling DeFi protocols with low fees and fast finality.",
+    author: "DeFiBuilder",
     date: "1 week ago",
     comments: 42,
-    tags: ["AI", "Oracles", "Chainlink", "Data"],
+    tags: ["DeFi", "Soroban", "Stellar", "DEX"],
   },
 ]

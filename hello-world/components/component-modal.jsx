@@ -64,29 +64,29 @@ export const mockComments = {
         {
             id: 1,
             author: {
-                name: "L2Enthusiast",
+                name: "StellarBuilder",
                 avatar: "/placeholder.svg?height=40&width=40",
             },
-            content: "StarkNet's composability is unmatched among ZK rollups. This is why I believe it will win the L2 race.",
+            content: "Soroban's smart contract platform on Stellar offers unique advantages with its Rust-based development and low fees.",
             date: "45 minutes ago",
         },
         {
             id: 2,
             author: {
-                name: "ZKProver",
+                name: "RustDeveloper",
                 avatar: "/placeholder.svg?height=40&width=40",
             },
             content:
-                "The developer tooling has improved dramatically in the last few months. Cairo is becoming much more accessible.",
+                "The developer tooling has improved dramatically. Writing smart contracts in Rust with Soroban is becoming more accessible.",
             date: "2 hours ago",
         },
         {
             id: 3,
             author: {
-                name: "ScalingSpecialist",
+                name: "DeFiSpecialist",
                 avatar: "/placeholder.svg?height=40&width=40",
             },
-            content: "What are your thoughts on StarkNet vs zkSync? Both have strong value propositions.",
+            content: "What are your thoughts on Soroban vs Ethereum for DeFi? Both have their strengths.",
             date: "3 hours ago",
         },
         {
@@ -96,7 +96,7 @@ export const mockComments = {
                 avatar: "/placeholder.svg?height=40&width=40",
             },
             content:
-                "The recent partnership announcements are bullish. More projects are choosing StarkNet for their scaling needs.",
+                "The recent ecosystem fund announcements are bullish. More projects are choosing Stellar for their DeFi needs.",
             date: "5 hours ago",
         },
     ],

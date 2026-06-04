@@ -4,7 +4,7 @@ import { useState } from "react"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Bitcoin, EclipseIcon as Ethereum } from "lucide-react"
+import { Bitcoin, Coins } from "lucide-react"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { GradientText } from "@/components/gradient-text"
 
@@ -55,7 +55,7 @@ export function MarketOverview() {
               <span>Bitcoin</span>
             </TabsTrigger>
             <TabsTrigger value="ethereum" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm">
-              <Ethereum className="h-3 w-3 sm:h-4 sm:w-4" />
+              <Coins className="h-3 w-3 sm:h-4 sm:w-4" />
               <span>Ethereum</span>
             </TabsTrigger>
           </TabsList>

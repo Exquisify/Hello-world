@@ -67,7 +67,7 @@ export const mockComments = {
         name: "L2Enthusiast",
         avatar: "/placeholder.svg?height=40&width=40",
       },
-      content: "StarkNet's composability is unmatched among ZK rollups. This is why I believe it will win the L2 race.",
+      content: "Soroban's composability on Stellar is unmatched among smart contract platforms. This is why I believe it will drive significant DeFi adoption.",,
       date: "45 minutes ago",
     },
     {
@@ -86,7 +86,7 @@ export const mockComments = {
         name: "ScalingSpecialist",
         avatar: "/placeholder.svg?height=40&width=40",
       },
-      content: "What are your thoughts on StarkNet vs zkSync? Both have strong value propositions.",
+      content: "What are your thoughts on Soroban vs Ethereum? Both have strong value propositions for DeFi.",
       date: "3 hours ago",
     },
     {
@@ -95,8 +95,8 @@ export const mockComments = {
         name: "CryptoResearcher",
         avatar: "/placeholder.svg?height=40&width=40",
       },
-      content:
-        "The recent partnership announcements are bullish. More projects are choosing StarkNet for their scaling needs.",
+content:
+                "The recent ecosystem fund announcements are bullish. More projects are choosing Stellar for their DeFi needs.",
       date: "5 hours ago",
     },
   ],

@@ -33,6 +33,10 @@ export function IdeasFilter() {
               <Label htmlFor="bitcoin">Bitcoin</Label>
             </div>
             <div className="flex items-center space-x-2">
+              <Checkbox id="stellar" />
+              <Label htmlFor="stellar">Stellar</Label>
+            </div>
+            <div className="flex items-center space-x-2">
               <Checkbox id="ethereum" />
               <Label htmlFor="ethereum">Ethereum</Label>
             </div>

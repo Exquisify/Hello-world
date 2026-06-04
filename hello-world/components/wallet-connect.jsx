@@ -3,53 +3,59 @@
 import { useState } from "react"
 import { Wallet } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { StarkNetInterface } from "@/lib/starknet-interface"
-import { useToast } from "@/hooks/use-toast"
+
+// Simple Stellar wallet interface using Freighter or standard Stellar wallets
+const StellarInterface = {
+  async connectWallet() {
+    // Check if Freighter wallet is installed
+    if (typeof window !== 'undefined' && window.freighterApi) {
+      try {
+        const result = await window.freighterApi.requestAccess()
+        return { success: true, address: result.address }
+      } catch (error) {
+        return { success: false, error: "Wallet access denied" }
+      }
+    }
+    
+    // Fallback for development/testing
+    return { success: false, error: "No Stellar wallet detected. Install Freighter." }
+  },
+
+  async disconnectWallet() {
+    // Stellar wallets typically handle disconnect via the wallet UI
+    return { success: true }
+  },
+
+  async signTransaction(transaction) {
+    if (typeof window !== 'undefined' && window.freighterApi) {
+      return await window.freighterApi.signTransaction(transaction)
+    }
+    throw new Error("No Stellar wallet detected")
+  }
+}
 
 export function WalletConnect() {
   const [isConnected, setIsConnected] = useState(false)
   const [address, setAddress] = useState(null)
   const [isConnecting, setIsConnecting] = useState(false)
-  const { toast } = useToast()
 
   const handleConnect = async () => {
     if (isConnected) {
-      // Disconnect wallet
-      await StarkNetInterface.disconnectWallet()
+      await StellarInterface.disconnectWallet()
       setIsConnected(false)
       setAddress(null)
-      toast({
-        title: "Wallet disconnected",
-        description: "Your StarkNet wallet has been disconnected",
-      })
       return
     }
 
-    // Connect wallet
     setIsConnecting(true)
     try {
-      const result = await StarkNetInterface.connectWallet()
+      const result = await StellarInterface.connectWallet()
       if (result.success) {
         setIsConnected(true)
-        setAddress(result.address ||  null)
-        toast({
-          title: "Wallet connected",
-          description: "Your StarkNet wallet has been connected successfully",
-        })
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Connection failed",
-          description: result.error || "Failed to connect wallet",
-        })
+        setAddress(result.address)
       }
     } catch (error) {
       console.error("Error connecting wallet:", error)
-      toast({
-        variant: "destructive",
-        title: "Connection error",
-        description: "An unexpected error occurred while connecting your wallet",
-      })
     } finally {
       setIsConnecting(false)
     }

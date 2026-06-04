@@ -56,18 +56,18 @@ const ideas = [
     },
     {
         id: 3,
-        title: "StarkNet ecosystem growth opportunities",
+        title: "Stellar DeFi ecosystem growth opportunities",
         content:
-            "StarkNet's Layer 2 scaling solution is gaining significant traction. Projects building on StarkNet are seeing increased adoption due to lower fees and faster transactions. This presents a unique investment opportunity for early adopters.",
+            "Stellar's Soroban smart contract platform is gaining significant traction. Projects building on Soroban are seeing increased adoption due to ultra-low fees and fast 5-second finality. This presents a unique opportunity for DeFi builders.",
         author: {
-            name: "L2Enthusiast",
+            name: "StellarBuilder",
             avatar: "/placeholder.svg?height=40&width=40",
         },
         date: "1 day ago",
         votes: 42,
         comments: 15,
         views: 587,
-        tags: ["StarkNet", "Layer 2", "Scaling", "Investment"],
+        tags: ["Stellar", "Soroban", "DeFi", "Scaling"],
         premium: false,
         relatedIdeas: [2, 7, 9],
     },
@@ -369,9 +369,9 @@ export default function IdeaDetailPage() {
                                     <Badge variant="outline" className="cursor-pointer hover:bg-primary/10">
                                         Regulation
                                     </Badge>
-                                    <Badge variant="outline" className="cursor-pointer hover:bg-primary/10">
-                                        StarkNet
-                                    </Badge>
+<Badge variant="outline" className="cursor-pointer hover:bg-primary/10">
+                        Stellar
+                    </Badge>
                                     <Badge variant="outline" className="cursor-pointer hover:bg-primary/10">
                                         Technical Analysis
                                     </Badge>
