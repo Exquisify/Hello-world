@@ -67,7 +67,7 @@ export const mockComments = {
         name: "L2Enthusiast",
         avatar: "/placeholder.svg?height=40&width=40",
       },
-      content: "Soroban's composability on Stellar is unmatched among smart contract platforms. This is why I believe it will drive significant DeFi adoption.",,
+      content: "Soroban's composability on Stellar is unmatched among smart contract platforms. This is why I believe it will drive significant DeFi adoption.",
       date: "45 minutes ago",
     },
     {

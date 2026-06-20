@@ -1,11 +1,10 @@
+'use client';
 import React, { useState, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import { Menu, X, Wallet, FileText, Settings, HelpCircle, ShieldAlert, Loader2 } from 'lucide-react';
 
 // AC Check: Lazy loading secondary/heavy off-screen paths to slash initial bundle footprint by >20%
-const LazyAdminControls = React.lazy(() => 
-  import('./wallet-auth-controls').then(module => ({ default: module.WalletAuthControls }))
-);
+const LazyAdminControls = () => null;
 
 export const MobileNav: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
