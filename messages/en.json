@@ -1,0 +1,15 @@
+{
+  "Index": {
+    "title": "Hello-World: Decentralized Crypto Idea-Sharing Platform",
+    "description": "A community-driven platform built on STELLAR for sharing, discovering, and validating cryptocurrency insights, market analysis, and trading strategies."
+  },
+  "Common": {
+    "home": "Home",
+    "market": "Market",
+    "community": "Community",
+    "premium": "Premium",
+    "trending": "Trending",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  }
+}

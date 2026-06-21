@@ -9,8 +9,14 @@ import { SocialIcons } from '@/components/social-icons';
 import { ThemeToggle } from "@/components/theme-toggle";
 import { WalletConnect } from "@/components/wallet-connect";
 import { MobileNav } from "@/components/mobile-nav";
+import { LanguageSwitcher } from "@/components/language-switcher";
+
+import { useTranslations } from 'next-intl';
 
 const page = () => {
+  const t = useTranslations('Common');
+  const tIndex = useTranslations('Index');
+  
   return (
     <div className="flex flex-col min-h-screen">
       <header className="border-b">
@@ -24,22 +30,23 @@ const page = () => {
           </div>
           <nav className="hidden md:flex gap-6">
             <Link href="/" className="text-sm font-medium underline underline-offset-4">
-              Home
+              {t('home')}
             </Link>
             <Link href="/ideas" className="text-sm font-medium hover:underline underline-offset-4">
               Ideas
             </Link>
             <Link href="/market" className="text-sm font-medium hover:underline underline-offset-4">
-              Market Data
+              {t('market')}
             </Link>
             <Link href="/premium" className="text-sm font-medium hover:underline underline-offset-4">
-              Premium
+              {t('premium')}
             </Link>
             <Link href="/community" className="text-sm font-medium hover:underline underline-offset-4">
-              Community
+              {t('community')}
             </Link>
           </nav>
           <div className="flex items-center gap-2 md:gap-4">
+            <LanguageSwitcher />
             <WalletConnect />
             <ThemeToggle />
           </div>
@@ -52,12 +59,11 @@ const page = () => {
             <div className='space-y-4 flex'>
               <h1 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
                 <GradientText className='text-center'>
-                  Discover and Share Crypto Ideas and strategies on Stellar
+                  {tIndex('title')}
                 </GradientText>
               </h1>
               <p className='max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
-                Hello-World is a decentralized platform for sharing crypto
-                insights, analysis, and predictions built on Stellar.
+                {tIndex('description')}
               </p>
             </div>
             <div className='mx-auto lg:mx-0 f w-full max-w-[500px]'>

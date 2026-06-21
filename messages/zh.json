@@ -1,0 +1,15 @@
+{
+  "Index": {
+    "title": "Hello-World：去中心化加密想法分享平台",
+    "description": "一个建立在 STELLAR 之上的社区驱动平台，用于分享、发现和验证加密货币见解、市场分析和交易策略。"
+  },
+  "Common": {
+    "home": "首页",
+    "market": "市场",
+    "community": "社区",
+    "premium": "高级",
+    "trending": "趋势",
+    "signIn": "登录",
+    "signUp": "注册"
+  }
+}

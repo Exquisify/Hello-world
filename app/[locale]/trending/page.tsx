@@ -1,3 +1,4 @@
+import React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { TrendingUp, ArrowUpRight, BarChart3 } from "lucide-react"
@@ -79,7 +80,7 @@ export default function TrendingPage() {
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">{topic.posts} posts this week</span>
                     <Link href={`/topics/${topic.id}`}>
-                      <Button variant="ghost" size="sm">
+                      <Button variant="ghost" size="sm" {...({} as any)}>
                         View Details
                       </Button>
                     </Link>
@@ -112,7 +113,7 @@ export default function TrendingPage() {
                           ))}
                         </div>
                       </div>
-                      <Badge className="flex items-center">
+                      <Badge variant="default" className="flex items-center">
                         <TrendingUp className="mr-1 h-3 w-3" />
                         Hot
                       </Badge>
