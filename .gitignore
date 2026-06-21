@@ -1,0 +1,13 @@
+/target
+/node_modules
+/.next
+/.vercel
+.env
+.env.local
+.env*.local
+.env.development
+.env.production
+.vscode
+.idea
+*.swp
+.DS_Store
