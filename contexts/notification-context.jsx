@@ -11,24 +11,43 @@ export function NotificationProvider({ children }) {
   const eventSourceRef = useRef(null)
 
   useEffect(() => {
-    const eventSource = new EventSource("/api/notifications/stream")
-    eventSourceRef.current = eventSource
+    let eventSource
+    let cancelled = false
 
-    eventSource.onmessage = (event) => {
+    const connect = async () => {
       try {
-        const notification = JSON.parse(event.data)
-        setNotifications((prev) => [notification, ...prev].slice(0, MAX_NOTIFICATIONS))
+        const response = await fetch("/api/auth/me")
+        if (!response.ok || cancelled) return
+        const { user } = await response.json()
+        if (user.notificationPreferences?.inApp === false || cancelled) {
+          setNotifications([])
+          return
+        }
       } catch {
-        // Ignore malformed events rather than tearing down the connection.
+        return
+      }
+
+      eventSource = new EventSource("/api/notifications/stream")
+      eventSourceRef.current = eventSource
+
+      eventSource.onmessage = (event) => {
+        try {
+          const notification = JSON.parse(event.data)
+          setNotifications((prev) => [notification, ...prev].slice(0, MAX_NOTIFICATIONS))
+        } catch {
+          // Ignore malformed events rather than tearing down the connection.
+        }
+      }
+
+      eventSource.onerror = () => {
+        // EventSource retries connections automatically.
       }
     }
-
-    eventSource.onerror = () => {
-      // EventSource retries connections automatically; nothing to do here.
-    }
+    connect()
 
     return () => {
-      eventSource.close()
+      cancelled = true
+      eventSource?.close()
       eventSourceRef.current = null
     }
   }, [])
