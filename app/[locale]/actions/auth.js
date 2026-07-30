@@ -3,14 +3,17 @@
 import { cookies } from "next/headers"
 import { z } from "zod"
 import crypto from "crypto"
+import { revalidatePath } from "next/cache"
 
 // Simple in-memory user store (in a real app, use a database)
 
 // In a real app, this would be a database
-const users = {};
+const authStore = globalThis.__helloWorldAuthStore ?? { users: {}, sessions: {} }
+globalThis.__helloWorldAuthStore = authStore
+const users = authStore.users
 
 // Session management
-const sessions = {};
+const sessions = authStore.sessions
 
 // Helper to hash passwords
 function hashPassword(password) {
@@ -33,7 +36,7 @@ function createSession(userId) {
 }
 
 // Helper to get current session
-export function getSession() {
+export async function getSession() {
   const sessionId = cookies().get("session_id")?.value
 
   if (!sessionId || !sessions[sessionId]) {
@@ -44,7 +47,6 @@ export function getSession() {
 
   // Check if session is expired
   if (session.expiresAt < Date.now()) {
-    cookies().delete("session_id")
     delete sessions[sessionId]
     return null
   }
@@ -53,8 +55,8 @@ export function getSession() {
 }
 
 // Helper to get current user
-export function getCurrentUser() {
-  const session = getSession()
+export async function getCurrentUser() {
+  const session = await getSession()
   if (!session) return null
 
   return users[session.userId] || null
@@ -79,6 +81,29 @@ const SignInSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(1, "Password is required"),
 })
+
+const SettingsSchema = z.object({
+  displayName: z.string().trim().min(2, "Display name must be at least 2 characters").max(60),
+  avatar: z.string().max(1_500_000, "Profile picture is too large").refine(
+    (value) => !value || value.startsWith("data:image/") || z.string().url().safeParse(value).success,
+    "Profile picture must be an image"
+  ),
+  emailNotifications: z.boolean(),
+  inAppNotifications: z.boolean(),
+})
+
+export async function toPublicUser(user) {
+  if (!user) return null
+  return {
+    id: user.id,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email,
+    displayName: user.displayName ?? `${user.firstName} ${user.lastName}`,
+    avatar: user.avatar ?? "",
+    notificationPreferences: user.notificationPreferences ?? { email: true, inApp: true },
+  }
+}
 
 // Sign up action
 export async function signUp(formData) {
@@ -117,6 +142,9 @@ export async function signUp(formData) {
       lastName,
       email,
       passwordHash: hashPassword(password),
+      displayName: `${firstName} ${lastName}`,
+      avatar: "",
+      notificationPreferences: { email: true, inApp: true },
     }
 
     // Create session
@@ -196,4 +224,28 @@ export async function signOut() {
   }
 
   return { success: true }
+}
+
+export async function updateSettings(_previousState, formData) {
+  const user = await getCurrentUser()
+  if (!user) return { success: false, message: "You must sign in to update settings." }
+
+  const validated = SettingsSchema.safeParse({
+    displayName: formData.get("displayName"),
+    avatar: formData.get("avatar") || "",
+    emailNotifications: formData.get("emailNotifications") === "true",
+    inAppNotifications: formData.get("inAppNotifications") === "true",
+  })
+  if (!validated.success) {
+    return { success: false, message: validated.error.issues[0]?.message ?? "Invalid settings." }
+  }
+
+  user.displayName = validated.data.displayName
+  user.avatar = validated.data.avatar
+  user.notificationPreferences = {
+    email: validated.data.emailNotifications,
+    inApp: validated.data.inAppNotifications,
+  }
+  revalidatePath("/", "layout")
+  return { success: true, message: "Settings saved." }
 }
