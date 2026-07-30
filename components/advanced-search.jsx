@@ -28,9 +28,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import { DateRangePicker } from "@/components/ui/date-range-picker"
-import { RangeSlider } from "@/components/ui/range-slider"
 import { UserAutocomplete } from "@/components/ui/user-autocomplete"
-import { useSearchFilters } from "@/hooks/use-search-filters.jsx"
+import { useSearchFilters } from "@/hooks/use-search-filters"
 import { QUICK_FILTERS } from "@/lib/search-utils"
 
 export function AdvancedSearch({ onSearch, isPending = false }) {
@@ -266,17 +265,28 @@ export function AdvancedSearch({ onSearch, isPending = false }) {
               {/* Vote Range Counter Slider Tier */}
               <div className="space-y-2">
                 <Label className="font-semibold text-slate-700">Vote Parameter Matrix</Label>
-                <RangeSlider
-                  value={filters.voteRange ? [filters.voteRange.min, filters.voteRange.max] : [0, 1000]}
-                  onValueChange={([min, max]) => {
-                    updateFilters({ voteRange: { min, max } })
-                    onSearch?.()
-                  }}
-                  min={0}
-                  max={1000}
-                  step={1}
-                  label="Votes"
-                />
+                <div className="grid grid-cols-2 gap-3">
+                  <Input
+                    type="number"
+                    min="0"
+                    aria-label="Minimum votes"
+                    value={filters.voteRange?.min ?? 0}
+                    onChange={(event) => updateFilters({ voteRange: {
+                      min: Number(event.target.value),
+                      max: filters.voteRange?.max ?? 1000,
+                    } })}
+                  />
+                  <Input
+                    type="number"
+                    min="0"
+                    aria-label="Maximum votes"
+                    value={filters.voteRange?.max ?? 1000}
+                    onChange={(event) => updateFilters({ voteRange: {
+                      min: filters.voteRange?.min ?? 0,
+                      max: Number(event.target.value),
+                    } })}
+                  />
+                </div>
               </div>
 
               {/* Autocomplete User Filter Block */}
@@ -312,7 +322,7 @@ export function HighlightText({ text = "", highlight = "" }) {
   return (
     <span>
       {parts.map((part, idx) => 
-        regex.test(part) ? (
+        part.toLowerCase() === highlight.toLowerCase() ? (
           <mark key={idx} className="bg-yellow-100 text-yellow-800 font-semibold px-0.5 rounded-sm">
             {part}
           </mark>

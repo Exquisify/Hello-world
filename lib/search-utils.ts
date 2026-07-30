@@ -1,7 +1,7 @@
 import type { SearchFilters } from "@/types/search"
 
-export function buildSearchQuery(filters: SearchFilters): Record<string, any> {
-  const query: Record<string, any> = {}
+export function buildSearchQuery(filters: SearchFilters): Record<string, string | number> {
+  const query: Record<string, string | number> = {}
 
   if (filters.query) {
     query.q = filters.query
@@ -31,10 +31,15 @@ export function buildSearchQuery(filters: SearchFilters): Record<string, any> {
     query.tags = filters.tags.join(",")
   }
 
+  if (filters.category) query.category = filters.category
+  if (filters.contentType && filters.contentType !== "all") {
+    query.contentType = filters.contentType
+  }
+
   return query
 }
 
-export function parseSearchQuery(searchParams: URLSearchParams): SearchFilters {
+export function parseSearchQuery(searchParams: { get(name: string): string | null }): SearchFilters {
   const filters: SearchFilters = {}
 
   const query = searchParams.get("q")
@@ -66,6 +71,14 @@ export function parseSearchQuery(searchParams: URLSearchParams): SearchFilters {
   const tags = searchParams.get("tags")
   if (tags) {
     filters.tags = tags.split(",")
+  }
+
+  const category = searchParams.get("category")
+  if (category) filters.category = category
+
+  const contentType = searchParams.get("contentType")
+  if (contentType === "premium" || contentType === "free") {
+    filters.contentType = contentType
   }
 
   return filters
