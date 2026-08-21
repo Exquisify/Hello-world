@@ -11,6 +11,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@stellar/stellar-sdk": "^13.3.0",
     "@next/swc-win32-x64-msvc": "^14.2.25",
     "@nextui-org/react": "^2.6.11",
     "@radix-ui/react-accordion": "^1.2.14",
