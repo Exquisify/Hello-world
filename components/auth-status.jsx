@@ -85,7 +85,7 @@ export function AuthStatus() {
       <DropdownMenuContent align="end">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => router.push(`/${locale}/profile`)}>
+        <DropdownMenuItem onClick={() => router.push(`/${locale}/profile/${user.id}`)}>
           <User className="mr-2 h-4 w-4" />
           Profile
         </DropdownMenuItem>

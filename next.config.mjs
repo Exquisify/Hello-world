@@ -1,5 +1,8 @@
 // next.config.mjs
+import createNextIntlPlugin from 'next-intl/plugin';
 import withBundleAnalyzer from '@next/bundle-analyzer';
+
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -16,9 +19,9 @@ const nextConfig = {
   },
 };
 
-// Wraps the configuration with an interactive visual dependency analyzer
+// Wraps the configuration with next-intl and interactive visual dependency analyzer
 const configWithAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
-})(nextConfig);
+})(withNextIntl(nextConfig));
 
 export default configWithAnalyzer;
