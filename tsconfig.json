@@ -34,6 +34,11 @@
     "**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "stories",
+    "e2e-tests",
+    "vitest.config.ts",
+    "vitest.unit.config.ts",
+    "playwright.config.ts"
   ]
 }
